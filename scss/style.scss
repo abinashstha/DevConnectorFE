@@ -67,7 +67,7 @@ img {
     text-align: center;
   }
 }
-//Profile page
+//Profiles page
 .profile {
   display: grid;
   grid-template-columns: 2fr 4fr 2fr;
@@ -77,31 +77,73 @@ img {
   line-height: 1.8rem;
   margin-bottom: 1rem;
 }
-//Alerts
-.alert {
-  padding: 0.8rem;
-  margin: 1rem;
-  opacity: 0.9;
-  background: $light-color;
-  color: #333;
-  &.alert-primary {
-    @include set-background($primary-color);
+
+//Profile page
+.profile-grid {
+  display: grid;
+  grid-template-areas: 'top top' 'about about' 'exp edu' 'github github';
+  grid-gap: 1rem;
+  .profile-top {
+    grid-area: top;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    img {
+      width: 250px;
+    }
+    .icons a {
+      color: #fff;
+      margin: 0 0.3rem;
+      &:hover {
+        color: $dark-color;
+      }
+    }
   }
-  &.alert-dark {
-    @include set-background($dark-color);
+  .profile-about {
+    grid-area: about;
+    text-align: center;
+    .skills {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
   }
-  &.alert-success {
-    @include set-background($success-color);
+  .profile-exp {
+    grid-area: exp;
   }
-  &.alert-danger {
-    @include set-background($danger-color);
+  .profile-edu {
+    grid-area: edu;
   }
-}
-.dark-overlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: rgba($color: #000000, $alpha: 0.75);
+  .profile-exp,
+  .profile-edu {
+    & > div {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: #ccc 1px dotted;
+    }
+    &:last-child {
+      border-bottom: none;
+    }
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+  .profile-github {
+    grid-area: github;
+    .repo {
+      display: flex;
+      & > div:first-child {
+        flex: 7;
+        flex-basis: 70%;
+      }
+      & > div:last-child {
+        flex: 3;
+        flex-basis: 20%;
+      }
+    }
+  }
 }
